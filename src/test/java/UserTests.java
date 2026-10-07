@@ -40,4 +40,10 @@ public class UserTests {
                         "type", Matchers.equalTo("unknown"),
                         "message", Matchers.notNullValue());;
     }
+
+    @Test
+    void builderTest() {
+        UserBuilder userBuilder = new UserBuilder().id(1).username("test").build();
+        System.out.println(userBuilder.toString());
+    }
 }
