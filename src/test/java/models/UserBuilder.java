@@ -1,5 +1,6 @@
 package models;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -7,6 +8,7 @@ import lombok.ToString;
 @ToString
 public class UserBuilder {
     private long id;
+    @Getter
     private String username;
     private String firstName;
     private String lastName;
@@ -32,5 +34,9 @@ public class UserBuilder {
 
     public UserBuilder build() {
         return new UserBuilder(id, username);
+    }
+
+    public String getUserName() {
+        return username;
     }
 }
