@@ -6,7 +6,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import io.restassured.specification.RequestSpecification;
-import models.UserBuilder;
+import models.User;
 
 import static constants.CommonConstants.*;
 import static io.restassured.RestAssured.given;
@@ -29,7 +29,7 @@ public class FluentUserController {
     }
 
     @Step("Add user")
-    public HttpResponse addUser(UserBuilder user) {
+    public HttpResponse addUser(User user) {
         this.requestSpecification.body(user);
         return new HttpResponse(given(this.requestSpecification).post("user").then());
     }

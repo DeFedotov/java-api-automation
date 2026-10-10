@@ -1,3 +1,4 @@
+import constants.CommonConstants;
 import controller.FluentUserController;
 import lombok.Data;
 import org.junit.jupiter.api.*;
@@ -10,7 +11,7 @@ public class FluentControllerTests {
     @BeforeEach
     @AfterEach
     void clear(){
-        fluentController.deleteUserByName(DEFAULT_USER.getUserName());
+        fluentController.deleteUserByName(String.valueOf(CommonConstants.DEFAULT_USER));
     }
 
     @Test
