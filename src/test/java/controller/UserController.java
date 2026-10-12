@@ -2,10 +2,9 @@ package controller;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.UserBuilder;
+import models.User;
 
 import static constants.CommonConstants.BASE_URL;
 import static io.restassured.RestAssured.given;
@@ -18,22 +17,23 @@ public class UserController {
         requestSpecification.accept("application/json");
         requestSpecification.contentType("application/json");
         requestSpecification.filter(new AllureRestAssured());
+        requestSpecification.log().all();
     }
 
     @Step("Create user")
-    public Response createUser(UserBuilder user) {
+    public Response createUser(User user) {
         requestSpecification.body(user);
-        return given(requestSpecification).when().post("/v2/user");
+        return given(requestSpecification).when().post("/user");
     }
 
     @Step("Update user")
     public Response updateUser(String body) {
         requestSpecification.body(body);
-        return given(requestSpecification).when().put("/v2/user" + body);
+        return given(requestSpecification).when().put("/user" + body);
     }
 
     @Step("Get user by username")
     public Response getUserByUsername(String username){
-        return  given(requestSpecification).when().get("/v2/user/" + username);
+        return  given(requestSpecification).when().get("/user/" + username);
     }
 }
