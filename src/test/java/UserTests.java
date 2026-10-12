@@ -58,10 +58,4 @@ public class UserTests {
         Assertions.assertEquals("unknown", response.jsonPath().getString("type"));
         Assertions.assertEquals("0", response.jsonPath().getString("message"));
     }
-
-    @Test
-    void updateUserTest() {
-        Response response = userController.createUser(DEFAULT_USER);
-
-    }
 }
