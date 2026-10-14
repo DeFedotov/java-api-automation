@@ -1,3 +1,4 @@
+import constants.CommonConstants;
 import controller.UserController;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
@@ -48,6 +49,7 @@ public class UserTests {
         Assertions.assertEquals(200, response.jsonPath().getInt("code"));
         Assertions.assertEquals("unknown", response.jsonPath().getString("type"));
         Assertions.assertNotEquals("0", response.jsonPath().getString("message"));
+        userController.getUserByUsername(DEFAULT_USER.getUsername());
     }
 
     @Test
@@ -57,5 +59,13 @@ public class UserTests {
         Assertions.assertEquals(200, response.jsonPath().getInt("code"));
         Assertions.assertEquals("unknown", response.jsonPath().getString("type"));
         Assertions.assertEquals("0", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    void updateUser(){
+        userController.updateUser(DEFAULT_USER);
+        Response response = userController.updateUser(UPDATED_USER);
+        Assertions.assertEquals(200, response.jsonPath().getInt("code"));
+        userController.getUserByUsername(DEFAULT_USER.getUsername());
     }
 }
