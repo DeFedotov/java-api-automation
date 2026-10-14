@@ -36,4 +36,13 @@ public class UserController {
     public Response getUserByUsername(String username){
         return  given(requestSpecification).when().get("/user/" + username);
     }
+
+    @Step("Update user")
+    public Response updateUser(User user) {
+        return given(this.requestSpecification)
+                .body(user)
+                .when()
+                .put(BASE_URL + "/user/" + user.getUsername())
+                .andReturn();
+    }
 }
