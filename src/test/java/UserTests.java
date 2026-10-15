@@ -1,4 +1,3 @@
-import constants.CommonConstants;
 import controller.UserController;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
