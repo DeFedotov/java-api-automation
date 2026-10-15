@@ -1,4 +1,3 @@
-import constants.CommonConstants;
 import controller.UserController;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
@@ -63,7 +62,7 @@ public class UserTests {
 
     @Test
     void updateUser(){
-        userController.updateUser(DEFAULT_USER);
+        userController.createUser(DEFAULT_USER);
         Response response = userController.updateUser(UPDATED_USER);
         Assertions.assertEquals(200, response.jsonPath().getInt("code"));
         userController.getUserByUsername(DEFAULT_USER.getUsername());
