@@ -67,4 +67,15 @@ public class UserTests {
         Assertions.assertEquals(200, response.jsonPath().getInt("code"));
         userController.getUserByUsername(DEFAULT_USER.getUsername());
     }
+
+    @Test
+    void deleteUserTest(){
+        userController.createUser(DEFAULT_USER);
+        userController.getUserByUsername(DEFAULT_USER.getUsername());
+
+        userController.deleteUser(DEFAULT_USER.getUsername());
+
+        Response response = userController.getUserByUsername(DEFAULT_USER.getUsername());
+        Assertions.assertEquals("User not found", response.jsonPath().getString("message"));
+    }
 }
