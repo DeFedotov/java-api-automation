@@ -45,4 +45,9 @@ public class UserController {
                 .put(BASE_URL + "/user/" + user.getUsername())
                 .andReturn();
     }
+
+    @Step("Delete user")
+    public Response deleteUser(String username){
+        return given(requestSpecification).when().delete("/user/" + username);
+    }
 }
