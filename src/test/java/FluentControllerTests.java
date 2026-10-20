@@ -19,4 +19,10 @@ public class FluentControllerTests {
     void addUserSuccess(){
         fluentController.addUser(DEFAULT_USER).statusCode(200);
     }
+
+    @Test
+    @DisplayName("Add default user")
+    void addDefaultUser(){
+        fluentController.addDefaultUser().statusCode(200);
+    }
 }
